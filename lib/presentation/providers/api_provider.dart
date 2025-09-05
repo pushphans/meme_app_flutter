@@ -11,4 +11,9 @@ class ApiProvider extends ChangeNotifier {
     _memes = await apiRepository.fetchMemes();
     notifyListeners();
   }
+
+  void reset() {
+    _memes = [];
+    notifyListeners();
+  }
 }

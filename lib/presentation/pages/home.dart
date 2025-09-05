@@ -20,7 +20,22 @@ class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("Memes")),
+      appBar: AppBar(
+        title: Text(
+          "Memes for you",
+          style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
+        ),
+
+        actions: [
+          IconButton(
+            onPressed: () {
+              Provider.of<ApiProvider>(context, listen: false).reset();
+              Provider.of<ApiProvider>(context, listen: false).fetchMeme();
+            },
+            icon: Icon(Icons.refresh),
+          ),
+        ],
+      ),
 
       body: Consumer<ApiProvider>(
         builder: (context, value, child) => Column(
