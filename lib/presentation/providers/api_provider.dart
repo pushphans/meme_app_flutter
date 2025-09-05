@@ -4,9 +4,11 @@ import 'package:meme_app_flutter/data/repositories/api_repository.dart';
 
 class ApiProvider extends ChangeNotifier {
   final apiRepository = ApiRepository();
-  List<Memes>? memes = [];
+  List<Memes>? _memes = [];
+  List<Memes>? get memes => _memes;
 
   Future<void> fetchMeme() async {
-    memes = await apiRepository.fetchMemes();
+    _memes = await apiRepository.fetchMemes();
+    notifyListeners();
   }
 }

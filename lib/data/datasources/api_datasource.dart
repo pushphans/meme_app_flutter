@@ -38,7 +38,7 @@ class ApiDataSource {
   Future<ApiResponse> getMemes() async {
     try {
       final response = await _dio.get(
-        "",
+        "50",
         options: Options(
           headers: {
             "Content-type": "application/json",
@@ -55,6 +55,7 @@ class ApiDataSource {
       }
     } on DioException catch (e) {
       log("Unexpected error $e");
+      throw Exception(e.toString());
     } catch (e) {
       log("Error occurred ${e.toString()}");
     }
